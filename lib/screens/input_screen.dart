@@ -18,6 +18,7 @@ class _InputScreenState extends State<InputScreen> {
   String? selectedGender;
   int age = 20;
   int weight = 60;
+  double height = 175;
 
   void _incrementAge() => setState(() => age++);
 
@@ -26,6 +27,8 @@ class _InputScreenState extends State<InputScreen> {
   void _incrementWeight() => setState(() => weight++);
 
   void _decrementWeight() => setState(() => weight--);
+
+  void _onHeightChanged(double value) => setState(() => height = value);
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +83,10 @@ class _InputScreenState extends State<InputScreen> {
                     ],
                   ),
                   SizedBox(height: 25),
-                  HeightSelector(),
+                  HeightSelector(
+                    height: height,
+                    onChanged: _onHeightChanged,
+                  ),
                   SizedBox(height: 25),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

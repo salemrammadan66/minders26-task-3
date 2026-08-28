@@ -2,15 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../core/app_colors.dart';
 
-class HeightSelector extends StatefulWidget {
-  const HeightSelector({super.key});
-
-  @override
-  State<HeightSelector> createState() => _HeightSelectorState();
-}
-
-class _HeightSelectorState extends State<HeightSelector> {
-  double height = 175;
+class HeightSelector extends StatelessWidget {
+  final double height;
+  final ValueChanged<double> onChanged;
+  const HeightSelector({super.key, required this.height, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +40,7 @@ class _HeightSelectorState extends State<HeightSelector> {
               value: height,
               min: 50,
               max: 300,
-              onChanged: (value) {
-                setState(() {
-                  height = value;
-                });
-              },
+              onChanged: onChanged,
               activeColor: AppColors.primaryColor,
             ),
             Padding(
