@@ -4,7 +4,6 @@ import 'package:bmi_calculator/widgets/number_selector.dart';
 import 'package:bmi_calculator/widgets/gender_selection_card.dart';
 import 'package:bmi_calculator/widgets/height_selector.dart';
 import 'package:flutter/material.dart';
-
 import 'result_screen.dart';
 
 class InputScreen extends StatefulWidget {
@@ -29,6 +28,16 @@ class _InputScreenState extends State<InputScreen> {
   void _decrementWeight() => setState(() => weight--);
 
   void _onHeightChanged(double value) => setState(() => height = value);
+
+  void _calculateBmi() {
+    final heightInMeters = height / 100;
+    final bmi = weight / (heightInMeters * heightInMeters);
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ResultScreen(bmi: bmi)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,14 +121,7 @@ class _InputScreenState extends State<InputScreen> {
                   SizedBox(height: 25),
                   CustomButton(
                     text: "Calculate BMI",
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ResultScreen(),
-                        ),
-                      );
-                    },
+                    onPressed: _calculateBmi,
                   ),
                 ],
               ),
