@@ -2,18 +2,24 @@ import 'package:flutter/material.dart';
 
 import '../core/app_colors.dart';
 
-class NumberSelector extends StatefulWidget {//ملقيتلهوش اسم سميته كده و خلاص
+class NumberSelector extends StatelessWidget {
+  //ملقيتلهوش اسم سميته كده و خلاص
   final String title;
+  final int value;
   final int min;
   final int max;
-  const NumberSelector({super.key, required this.title, required this.min, required this.max});
+  final VoidCallback onIncrement;
+  final VoidCallback onDecrement;
 
-  @override
-  State<NumberSelector> createState() => _NumberSelectorState();
-}
-
-class _NumberSelectorState extends State<NumberSelector> {
-  int counter = 20;
+  const NumberSelector({
+    super.key,
+    required this.title,
+    required this.min,
+    required this.max,
+    required this.value,
+    required this.onIncrement,
+    required this.onDecrement,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +35,7 @@ class _NumberSelectorState extends State<NumberSelector> {
         child: Column(
           children: [
             Text(
-              widget.title,
+              title,
               style: TextStyle(
                 color: AppColors.secondaryColor,
                 fontWeight: FontWeight.w400,
@@ -37,7 +43,7 @@ class _NumberSelectorState extends State<NumberSelector> {
               ),
             ),
             Text(
-              counter.toString(),
+              value.toString(),
               style: TextStyle(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.bold,
@@ -50,14 +56,8 @@ class _NumberSelectorState extends State<NumberSelector> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {
-                      setState(() {
-                        if(counter>widget.min){
-                          counter--;
-                        }
-                      });
-                    },
-                    icon: Icon(Icons.exposure_minus_1,color: Colors.white,),
+                    onPressed: value > min ? onDecrement : null,
+                    icon: Icon(Icons.exposure_minus_1, color: Colors.white),
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all(
                         AppColors.secondaryColor,
@@ -65,14 +65,8 @@ class _NumberSelectorState extends State<NumberSelector> {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {
-                      setState(() {
-                        if(counter<=widget.max){
-                          counter++;
-                        }
-                      });
-                    },
-                    icon: Icon(Icons.plus_one,color: Colors.white,),
+                    onPressed: value < max ? onIncrement : null,
+                    icon: Icon(Icons.plus_one, color: Colors.white),
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all(
                         AppColors.secondaryColor,
