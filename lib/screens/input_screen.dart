@@ -1,4 +1,5 @@
 import 'package:bmi_calculator/core/app_colors.dart';
+import 'package:bmi_calculator/widgets/number_selector.dart';
 import 'package:bmi_calculator/widgets/gender_selection_card.dart';
 import 'package:bmi_calculator/widgets/height_selector.dart';
 import 'package:flutter/material.dart';
@@ -33,37 +34,47 @@ class _InputScreenState extends State<InputScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Column(
                 children: [
-                  GenderSelectionCard(
-                    gender: const Icon(Icons.male),
-                    genderText: "Male",
-                    isSelected: selectedGender == "Male",
-                    onTap: () {
-                      setState(() {
-                        selectedGender = "Male";
-                      });
-                    },
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GenderSelectionCard(
+                        gender: const Icon(Icons.male),
+                        genderText: "Male",
+                        isSelected: selectedGender == "Male",
+                        onTap: () {
+                          setState(() {
+                            selectedGender = "Male";
+                          });
+                        },
+                      ),
+                      GenderSelectionCard(
+                        gender: const Icon(Icons.female),
+                        genderText: "Female",
+                        isSelected: selectedGender == "Female",
+                        onTap: () {
+                          setState(() {
+                            selectedGender = "Female";
+                          });
+                        },
+                      ),
+                    ],
                   ),
-                  GenderSelectionCard(
-                    gender: const Icon(Icons.female),
-                    genderText: "Female",
-                    isSelected: selectedGender == "Female",
-                    onTap: () {
-                      setState(() {
-                        selectedGender = "Female";
-                      });
-                    },
+                  SizedBox(height: 25,),
+                  HeightSelector(),
+                  SizedBox(height: 25,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      NumberSelector(title: "Age",min: 16,max: 105,),
+                      NumberSelector(title: "Weight (KG)",min: 30,max: 300,),
+                    ],
                   ),
+
                 ],
               ),
             ),
-            SizedBox(height: 25,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: HeightSelector(),
-            )
           ],
         ),
       ),
