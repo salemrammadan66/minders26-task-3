@@ -1,5 +1,6 @@
-import 'package:bmi_calculator/core/app_colors.dart';
 import 'package:flutter/material.dart';
+
+import '../core/app_colors.dart';
 
 class GenderSelectionCard extends StatelessWidget {
   final Icon gender;

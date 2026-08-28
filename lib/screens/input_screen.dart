@@ -1,9 +1,10 @@
-import 'package:bmi_calculator/core/app_colors.dart';
-import 'package:bmi_calculator/widgets/custom_button.dart';
-import 'package:bmi_calculator/widgets/number_selector.dart';
-import 'package:bmi_calculator/widgets/gender_selection_card.dart';
-import 'package:bmi_calculator/widgets/height_selector.dart';
+
 import 'package:flutter/material.dart';
+import '../core/app_colors.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/gender_selection_card.dart';
+import '../widgets/height_selector.dart';
+import '../widgets/number_selector.dart';
 import 'result_screen.dart';
 
 class InputScreen extends StatefulWidget {

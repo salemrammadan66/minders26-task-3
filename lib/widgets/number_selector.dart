@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../core/app_colors.dart';
 
-class NumberSelector extends StatelessWidget {
-  //ملقيتلهوش اسم سميته كده و خلاص
+class NumberSelector extends StatelessWidget { //ملقيتلهوش اسم سميته كده و خلاص
   final String title;
   final int value;
   final int min;
