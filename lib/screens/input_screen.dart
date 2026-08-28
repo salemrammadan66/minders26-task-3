@@ -122,7 +122,7 @@ class _InputScreenState extends State<InputScreen> {
                   SizedBox(height: 25),
                   CustomButton(
                     text: "Calculate BMI",
-                    onPressed: _calculateBmi,
+                    onPressed: selectedGender == null ? null : _calculateBmi,
                   ),
                 ],
               ),

@@ -4,12 +4,9 @@ import '../core/app_colors.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
-  const CustomButton({
-    super.key,
-    required this.text,
-    required this.onPressed,
-  });
+  final VoidCallback? onPressed;
+
+  const CustomButton({super.key, required this.text, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +16,16 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: onPressed != null
+              ? AppColors.primaryColor
+              : AppColors.sliderColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(40),
           ),
         ),
         child: Text(
           text,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-          ),
+          style: const TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
     );
