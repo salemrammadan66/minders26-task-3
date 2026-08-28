@@ -1,5 +1,6 @@
 import 'package:bmi_calculator/core/app_colors.dart';
 import 'package:bmi_calculator/widgets/gender_selection_card.dart';
+import 'package:bmi_calculator/widgets/height_selector.dart';
 import 'package:flutter/material.dart';
 
 class InputScreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class _InputScreenState extends State<InputScreen> {
               child: Text(
                 "BMI CALCULATOR",
                 style: TextStyle(
-                  color: AppColors.primaryColor,
+                  color: AppColors.secondaryColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 24,
                 ),
@@ -57,6 +58,11 @@ class _InputScreenState extends State<InputScreen> {
                   ),
                 ],
               ),
+            ),
+            SizedBox(height: 25,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: HeightSelector(),
             )
           ],
         ),
